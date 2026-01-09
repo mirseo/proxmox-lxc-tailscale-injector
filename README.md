@@ -1,6 +1,6 @@
 # lxc-injector — Proxmox LXC TUN 활성화 스크립트
 
-[English README](README.en.md)
+[English README here](README.en.md)
 
 ## 소개
 이 프로젝트는 Proxmox VE 환경에서 특정 LXC 컨테이너가 `/dev/net/tun` 디바이스를 사용할 수 있도록 가볍게 설정을 추가하는 스크립트입니다. 스크립트는 사용자가 입력한 LXC ID를 검증한 뒤, 해당 컨테이너 설정 파일(`/etc/pve/lxc/[ID].conf`)의 맨 마지막에 필요한 두 줄을 추가합니다. 동일한 설정이 이미 있으면 중복하여 추가하지 않습니다.
