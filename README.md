@@ -1,6 +1,6 @@
 # lxc-injector — Enable TUN in Proxmox LXC
 
-[한국어 README](README.ko.md)
+[Korean README](README.ko.md)
 
 ## Overview
 This project provides a small script that enables `/dev/net/tun` in a specific Proxmox LXC container. It prompts for an LXC ID, validates the input, and appends two required lines to the end of `/etc/pve/lxc/[ID].conf`. If the lines already exist, the script avoids adding duplicates.
