@@ -62,3 +62,6 @@ lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file 0 0
 - The script aims for minimal changes and does not touch other container settings.
 - In Proxmox clusters, the same path `/etc/pve/lxc/[ID].conf` applies.
 
+## LICENSE
+MIT
+
