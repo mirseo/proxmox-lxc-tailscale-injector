@@ -1,4 +1,4 @@
-# lxc-injector — Enable TUN in Proxmox LXC
+# lxc-injector — Enable Tailscale in Proxmox LXC
 
 [Korean README](README.ko.md)
 
