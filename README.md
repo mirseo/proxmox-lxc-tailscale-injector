@@ -6,7 +6,7 @@
 This project provides a small script that enables `/dev/net/tun` in a specific Proxmox LXC container. It prompts for an LXC ID, validates the input, and appends two required lines to the end of `/etc/pve/lxc/[ID].conf`. If the lines already exist, the script avoids adding duplicates.
 
 ## What It Does
-- Shows prompt: `[proxmox LXC ID를 입력해주세요 >>> ]`
+- Shows prompt: `[Please enter your proxmox LXC ID >>> ]`
 - Validates that the input is an integer in the range 1–65500
 - Appends the following two lines to `/etc/pve/lxc/[ID].conf` only if missing
 
