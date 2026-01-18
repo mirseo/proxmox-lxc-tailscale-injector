@@ -22,22 +22,22 @@ fi
 # 대화형/비대화형(파이프) 모두에서 안정적으로 입력을 받기 위한 처리
 if [ -t 0 ]; then
   # 표준입력이 터미널이면 일반적인 방식으로 프롬프트와 입력
-  read -r -p "[proxmox LXC ID를 입력해주세요 >>> ] " LXC_ID
+  read -r -p "[Please enter your proxmox LXC ID >>> ] " LXC_ID
 else
   # 파이프 설치(wget|bash 등) 시에는 /dev/tty에서 직접 입력을 받음
-  printf "[proxmox LXC ID를 입력해주세요 >>> ] " > /dev/tty
+  printf "[Please enter your proxmox LXC ID >>> ] " > /dev/tty
   read -r LXC_ID < /dev/tty
 fi
 
 # 숫자 형태인지 먼저 확인
 if ! [[ "$LXC_ID" =~ ^[0-9]+$ ]]; then
-  echo "오류: 숫자만 입력할 수 있습니다. (예: 101)" >&2
+  echo "Error: Only numbers are allowed (e.g. 101)" >&2
   exit 1
 fi
 
 # 허용 범위(1~65500) 확인
 if (( LXC_ID < 1 || LXC_ID > 65500 )); then
-  echo "오류: LXC ID는 1부터 65500 사이의 값이어야 합니다." >&2
+  echo "Error: LXC ID must be a value between 1 and 65500." >&2
   exit 1
 fi
 
@@ -45,8 +45,8 @@ CONF_PATH="/etc/pve/lxc/${LXC_ID}.conf"
 
 # 대상 컨테이너 설정 파일 존재 여부 확인
 if [[ ! -f "$CONF_PATH" ]]; then
-  echo "오류: 컨테이너 설정 파일을 찾을 수 없습니다: $CONF_PATH" >&2
-  echo "힌트: 'pct list'로 컨테이너 목록을 확인하거나 ID를 다시 확인하세요." >&2
+  echo "Error: Could not find container configuration file: $CONF_PATH" >&2
+  echo "Hint: Check the container list with 'pct list' or double-check the ID." >&2
   exit 1
 fi
 
@@ -60,15 +60,15 @@ append_if_missing() {
   local line="$1"
   local path="$2"
   if grep -qxF "$line" "$path"; then
-    echo "이미 포함됨: $line"
+    echo "Already included: $line"
   else
     echo "$line" >> "$path"
-    echo "추가됨: $line"
+    echo "Added: $line"
   fi
 }
 
-echo "대상 파일: $CONF_PATH"
+echo "target file: $CONF_PATH"
 append_if_missing "$LINE1" "$CONF_PATH"
 append_if_missing "$LINE2" "$CONF_PATH"
 
-echo "완료: $CONF_PATH 파일의 마지막에 필요한 설정이 적용되었습니다."
+echo "complete: The required settings have been applied to the end of the $CONF_PATH file."
