@@ -50,7 +50,8 @@ if [[ ! -f "$CONF_PATH" ]]; then
   exit 1
 fi
 
-# 추가할 설정 라인들 (요구사항 그대로)
+# 추가 반영 예정사항(Todo)
+# - 스크립트 호환성 개선 ( + 추가적인 권한 안정화 )
 LINE1="lxc.cgroup2.devices.allow: c 10:200 rwm"
 LINE2="lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file 0 0"
 
