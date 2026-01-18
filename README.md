@@ -61,3 +61,6 @@ lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file 0 0
 - 이 스크립트는 최소 변경을 목표로 하며, 컨테이너의 다른 설정에는 영향을 주지 않습니다.
 - Proxmox 클러스터 환경에서도 `/etc/pve/lxc/[ID].conf`에 동일하게 반영됩니다.
 
+## 라이선스
+MIT
+
